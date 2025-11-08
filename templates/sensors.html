@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Sensors - Food Quality Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Food Quality Detection System</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('history') }}">History</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>IoT Sensor Monitoring</h2>
+        <div class="sensor-grid">
+            <div class="sensor-card">
+                <h3>Temperature Sensor</h3>
+                <div class="sensor-value" id="temperature">--°C</div>
+                <div class="sensor-status">DHT22 Connected</div>
+            </div>
+            <div class="sensor-card">
+                <h3>Humidity Sensor</h3>
+                <div class="sensor-value" id="humidity">--%</div>
+                <div class="sensor-status">DHT22 Connected</div>
+            </div>
+        </div>
+        <button onclick="refreshSensors()">Refresh Readings</button>
+    </div>
+
+    <script>
+        function refreshSensors() {
+            fetch('/api/sensors')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temperature').textContent = data.temperature + '°C';
+                    document.getElementById('humidity').textContent = data.humidity + '%';
+                });
+        }
+        
+        // Auto-refresh every 5 seconds
+        setInterval(refreshSensors, 5000);
+        refreshSensors(); // Initial load
+    </script>
+</body>
+</html>

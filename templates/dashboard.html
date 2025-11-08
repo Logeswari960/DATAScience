@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Quality Detection - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Food Quality Detection System</h1>
+        <div class="nav-links">
+            <span>Welcome, {{ session.username }}!</span>
+            <a href="{{ url_for('sensors') }}">IoT Sensors</a>
+            <a href="{{ url_for('history') }}">History</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="upload-section">
+            <h2>Upload Food Image for Analysis</h2>
+            <div class="upload-area" id="uploadArea">
+                <p>Click to select or drag and drop an image</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+            <button id="uploadBtn" style="display: none;">Analyze Image</button>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <h2>Analysis Results</h2>
+            <div class="result-card">
+                <div class="image-preview">
+                    <img id="previewImage" src="" alt="Uploaded image">
+                </div>
+                <div class="analysis-results">
+                    <div class="metric">
+                        <label>Quality Score:</label>
+                        <span id="qualityScore"></span>%
+                    </div>
+                    <div class="metric">
+                        <label>Temperature:</label>
+                        <span id="temperature"></span>°C
+                    </div>
+                    <div class="metric">
+                        <label>Humidity:</label>
+                        <span id="humidity"></span>%
+                    </div>
+                    <div class="metric">
+                        <label>Freshness:</label>
+                        <span id="freshness" class="freshness-badge"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <p>Analyzing image...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

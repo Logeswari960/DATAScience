@@ -1,0 +1,6 @@
+AppData/ 
+*.log 
+*.exe 
+*.dll 
+*.db 
+*.tmp 
