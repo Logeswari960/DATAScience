@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Food Quality Detection System
 
 A web application for analyzing food quality through image upload with user authentication and history tracking.
@@ -59,3 +60,6 @@ finalfood/
 3. Click "Analyze Image" to get quality predictions
 4. View analysis history in the History section
 5. Results include quality score, temperature, humidity, and freshness rating
+=======
+# DATAScience
+>>>>>>> ec376c9f4377c59512229fe40bd2edba4c31fbfb
